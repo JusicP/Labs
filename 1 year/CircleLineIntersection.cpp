@@ -1,4 +1,4 @@
-// 9. Задаються коло та лінія. Якщо вони перетинаються, то вивести точки перетину.
+// 9. Р—Р°РґР°СЋС‚СЊСЃСЏ РєРѕР»Рѕ С‚Р° Р»С–РЅС–СЏ. РЇРєС‰Рѕ РІРѕРЅРё РїРµСЂРµС‚РёРЅР°СЋС‚СЊСЃСЏ, С‚Рѕ РІРёРІРµСЃС‚Рё С‚РѕС‡РєРё РїРµСЂРµС‚РёРЅСѓ.
 #include <iostream>
 #include <locale>
 #include <Windows.h>
@@ -22,7 +22,7 @@ struct Line
     Point p2;
 };
 
-// Функція перевіряє, чи перетинає пряма коло, якщо так, то записує в p1, p2 точки перетину та повертає кількість точок перетину
+// Р¤СѓРЅРєС†С–СЏ РїРµСЂРµРІС–СЂСЏС”, С‡Рё РїРµСЂРµС‚РёРЅР°С” РїСЂСЏРјР° РєРѕР»Рѕ, СЏРєС‰Рѕ С‚Р°Рє, С‚Рѕ Р·Р°РїРёСЃСѓС” РІ p1, p2 С‚РѕС‡РєРё РїРµСЂРµС‚РёРЅСѓ С‚Р° РїРѕРІРµСЂС‚Р°С” РєС–Р»СЊРєС–СЃС‚СЊ С‚РѕС‡РѕРє РїРµСЂРµС‚РёРЅСѓ
 int IsLineIntersectsCircle(Circle circle, Line line, Point& p1, Point& p2)
 {
     double cx = line.p1.x - circle.center.x;
@@ -36,21 +36,21 @@ int IsLineIntersectsCircle(Circle circle, Line line, Point& p1, Point& p2)
 
     if (det < 0)
     {
-        // немає рішень
+        // РЅРµРјР°С” СЂС–С€РµРЅСЊ
         return 0;
     }
-    else if (det == 0) // один корінь
+    else if (det == 0) // РѕРґРёРЅ РєРѕСЂС–РЅСЊ
     {
-        // пряма є дотичною до кола
+        // РїСЂСЏРјР° С” РґРѕС‚РёС‡РЅРѕСЋ РґРѕ РєРѕР»Р°
         double t = -b / (2 * a);
         p1.x = line.p1.x + t * vx;
         p1.y = line.p1.y + t * vy;
 
         return 1;
     }
-    else // два корені
+    else // РґРІР° РєРѕСЂРµРЅС–
     {
-        // пряма перетинає коло
+        // РїСЂСЏРјР° РїРµСЂРµС‚РёРЅР°С” РєРѕР»Рѕ
         det = sqrt(det);
         double t1 = (-b - det) / (2 * a);
         double t2 = (-b + det) / (2 * a);
@@ -72,20 +72,20 @@ int main()
     SetConsoleOutputCP(1251);
 
     Circle circle;
-    printf("Введіть координати центру кола та його радіус.\n");
+    printf("Р’РІРµРґС–С‚СЊ РєРѕРѕСЂРґРёРЅР°С‚Рё С†РµРЅС‚СЂСѓ РєРѕР»Р° С‚Р° Р№РѕРіРѕ СЂР°РґС–СѓСЃ.\n");
     cin >> circle.center.x >> circle.center.y >> circle.r;
 
     Line line;
-    printf("Введіть координати двох точок прямої.\n");
+    printf("Р’РІРµРґС–С‚СЊ РєРѕРѕСЂРґРёРЅР°С‚Рё РґРІРѕС… С‚РѕС‡РѕРє РїСЂСЏРјРѕС—.\n");
     cin >> line.p1.x >> line.p1.y >> line.p2.x >> line.p2.y;
 
-    printf("Задано коло, центр: O(%f, %f), радіус: %f.\nЗадано пряму: M1(%f, %f), M2(%f, %f).\n", circle.center.x, circle.center.y, circle.r, line.p1.x, line.p1.y, line.p2.x, line.p2.y);
+    printf("Р—Р°РґР°РЅРѕ РєРѕР»Рѕ, С†РµРЅС‚СЂ: O(%f, %f), СЂР°РґС–СѓСЃ: %f.\nР—Р°РґР°РЅРѕ РїСЂСЏРјСѓ: M1(%f, %f), M2(%f, %f).\n", circle.center.x, circle.center.y, circle.r, line.p1.x, line.p1.y, line.p2.x, line.p2.y);
 
     Point p1, p2;
     int pointCount = IsLineIntersectsCircle(circle, line, p1, p2);
     if (pointCount > 0)
     {
-        printf("Пряма перетинає коло у точці/точках:\nA(%f, %f)\n", p1.x, p1.y);
+        printf("РџСЂСЏРјР° РїРµСЂРµС‚РёРЅР°С” РєРѕР»Рѕ Сѓ С‚РѕС‡С†С–/С‚РѕС‡РєР°С…:\nA(%f, %f)\n", p1.x, p1.y);
 
         if (pointCount == 2)
         {
@@ -94,7 +94,7 @@ int main()
     }
     else
     {
-        printf("Пряма не перетинає коло\n");
+        printf("РџСЂСЏРјР° РЅРµ РїРµСЂРµС‚РёРЅР°С” РєРѕР»Рѕ\n");
     }
 
     system("pause");

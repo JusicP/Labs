@@ -1,4 +1,4 @@
-﻿// Синтаксичний аналіз простих мов
+// Синтаксичний аналіз простих мов
 #include <iostream>
 #include <locale>
 #include <Windows.h>

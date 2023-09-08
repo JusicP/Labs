@@ -1,4 +1,4 @@
-// Складський облік війського майна військової частини X
+// РЎРєР»Р°РґСЃСЊРєРёР№ РѕР±Р»С–Рє РІС–Р№СЃСЊРєРѕРіРѕ РјР°Р№РЅР° РІС–Р№СЃСЊРєРѕРІРѕС— С‡Р°СЃС‚РёРЅРё X
 #include <iostream>
 #include <io.h>
 
@@ -29,24 +29,24 @@ struct Date
 
 struct MilitaryPropertyEntry 
 {
-	unsigned int id; // унікальний ідентифікатор
-	char name[96]; // повна назва
-	MilitaryPropertyCategory category; // Боєприпаси, стрілецька зброя, літаки, танки, бронетехніка
-	int count; // кількість
-	Date productionDate; // дата виробництва
-	Date arrivalDate; // дата постачання
-	int partNumber; // заводський номер
+	unsigned int id; // СѓРЅС–РєР°Р»СЊРЅРёР№ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ
+	char name[96]; // РїРѕРІРЅР° РЅР°Р·РІР°
+	MilitaryPropertyCategory category; // Р‘РѕС”РїСЂРёРїР°СЃРё, СЃС‚СЂС–Р»РµС†СЊРєР° Р·Р±СЂРѕСЏ, Р»С–С‚Р°РєРё, С‚Р°РЅРєРё, Р±СЂРѕРЅРµС‚РµС…РЅС–РєР°
+	int count; // РєС–Р»СЊРєС–СЃС‚СЊ
+	Date productionDate; // РґР°С‚Р° РІРёСЂРѕР±РЅРёС†С‚РІР°
+	Date arrivalDate; // РґР°С‚Р° РїРѕСЃС‚Р°С‡Р°РЅРЅСЏ
+	int partNumber; // Р·Р°РІРѕРґСЃСЊРєРёР№ РЅРѕРјРµСЂ
 };
 
 MilitaryPropertyEntry defaultEntries [] = {
-	{1, "АК-74", CATEGORY_WEAPON, 6534, Date {1974, 6}, Date{1991, 6}, 66564},
-	{2, "АК-47", CATEGORY_WEAPON, 2356, Date {1954, 1}, Date{1960, 5}, 2324},
-	{3, "Бронежилети 5 классу", CATEGORY_BULLETPROOF_VEST, 1000, Date {2004, 12}, Date{2005, 1}, 22223},
-	{4, "Т-64", CATEGORY_TANK, 554, Date {1968, 3}, Date{1969, 6}, 100001},
-	{5, "Т-80", CATEGORY_TANK, 999, Date {1985, 6}, Date{1985, 8}, 200002},
-	{6, "БМП-1", CATEGORY_ARMORED_VEHICLE, 3054, Date {1975, 1}, Date{1977, 5}, 5009},
-	{7, "АН-12", CATEGORY_AIRCRAFT, 10, Date {1964, 8}, Date{1964, 9}, 101},
-	{8, "152-мм снаряд", CATEGORY_AMMUNITION, 30000, Date {1992, 4}, Date{1992, 4}, 4433}
+	{1, "РђРљ-74", CATEGORY_WEAPON, 6534, Date {1974, 6}, Date{1991, 6}, 66564},
+	{2, "РђРљ-47", CATEGORY_WEAPON, 2356, Date {1954, 1}, Date{1960, 5}, 2324},
+	{3, "Р‘СЂРѕРЅРµР¶РёР»РµС‚Рё 5 РєР»Р°СЃСЃСѓ", CATEGORY_BULLETPROOF_VEST, 1000, Date {2004, 12}, Date{2005, 1}, 22223},
+	{4, "Рў-64", CATEGORY_TANK, 554, Date {1968, 3}, Date{1969, 6}, 100001},
+	{5, "Рў-80", CATEGORY_TANK, 999, Date {1985, 6}, Date{1985, 8}, 200002},
+	{6, "Р‘РњРџ-1", CATEGORY_ARMORED_VEHICLE, 3054, Date {1975, 1}, Date{1977, 5}, 5009},
+	{7, "РђРќ-12", CATEGORY_AIRCRAFT, 10, Date {1964, 8}, Date{1964, 9}, 101},
+	{8, "152-РјРј СЃРЅР°СЂСЏРґ", CATEGORY_AMMUNITION, 30000, Date {1992, 4}, Date{1992, 4}, 4433}
 };
 
 bool WriteDefaultEntries();
@@ -58,13 +58,13 @@ void PrintEntryByID(int id);
 void PrintAllEntries(int category = CATEGORY_NONE);
 void PrintReport();
 
-// запис бази даних за умовчуванням (для прикладу), якщо бази не існує
+// Р·Р°РїРёСЃ Р±Р°Р·Рё РґР°РЅРёС… Р·Р° СѓРјРѕРІС‡СѓРІР°РЅРЅСЏРј (РґР»СЏ РїСЂРёРєР»Р°РґСѓ), СЏРєС‰Рѕ Р±Р°Р·Рё РЅРµ С–СЃРЅСѓС”
 bool WriteDefaultEntries()
 {
 	FILE* f = fopen(DATABASE_FILENAME, "r");
 	if (f)
 	{
-		// файл вже існує
+		// С„Р°Р№Р» РІР¶Рµ С–СЃРЅСѓС”
 		fclose(f);
 		return false;
 	}
@@ -72,7 +72,7 @@ bool WriteDefaultEntries()
 	f = fopen(DATABASE_FILENAME, "wb+");
 	if (!f)
 	{
-		printf("WriteDefaultEntries(): не вдалося відкрити файл\n");
+		printf("WriteDefaultEntries(): РЅРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р»\n");
 		return false;
 	}
 
@@ -81,7 +81,7 @@ bool WriteDefaultEntries()
 	size_t retValue = fwrite(&defaultEntries, sizeof(MilitaryPropertyEntry), sizeof(defaultEntries) / sizeof(MilitaryPropertyEntry), f);
 	if (retValue != (sizeof(defaultEntries) / sizeof(MilitaryPropertyEntry)))
 	{
-		printf("WriteDefaultEntries(): не вдалося записати базу даних\n");
+		printf("WriteDefaultEntries(): РЅРµ РІРґР°Р»РѕСЃСЏ Р·Р°РїРёСЃР°С‚Рё Р±Р°Р·Сѓ РґР°РЅРёС…\n");
 		fclose(f);
 		return false;
 	}
@@ -91,13 +91,13 @@ bool WriteDefaultEntries()
 	return true;
 }
 
-// додавання нових записів, запис їх до файлу
+// РґРѕРґР°РІР°РЅРЅСЏ РЅРѕРІРёС… Р·Р°РїРёСЃС–РІ, Р·Р°РїРёСЃ С—С… РґРѕ С„Р°Р№Р»Сѓ
 bool AddEntry(MilitaryPropertyEntry& entry)
 {
 	FILE* f = fopen(DATABASE_FILENAME, "rb+");
 	if (!f)
 	{
-		printf("AddEntry(): не вдалося відкрити файл\n");
+		printf("AddEntry(): РЅРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р»\n");
 		return false;
 	}
 
@@ -105,16 +105,16 @@ bool AddEntry(MilitaryPropertyEntry& entry)
 	fread(&nextID, sizeof(nextID), 1, f);
 	entry.id = nextID++;
 
-	// переходимо на початок файлу
+	// РїРµСЂРµС…РѕРґРёРјРѕ РЅР° РїРѕС‡Р°С‚РѕРє С„Р°Р№Р»Сѓ
 	rewind(f);
 
-	// оновлюємо інформацію про наступний ідентифікатор
+	// РѕРЅРѕРІР»СЋС”РјРѕ С–РЅС„РѕСЂРјР°С†С–СЋ РїСЂРѕ РЅР°СЃС‚СѓРїРЅРёР№ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ
 	fwrite(&nextID, sizeof(nextID), 1, f);
 
-	// переходимо до кінця файлу
+	// РїРµСЂРµС…РѕРґРёРјРѕ РґРѕ РєС–РЅС†СЏ С„Р°Р№Р»Сѓ
 	fseek(f, 0, SEEK_END);
 
-	// додаємо новий запис
+	// РґРѕРґР°С”РјРѕ РЅРѕРІРёР№ Р·Р°РїРёСЃ
 	fwrite(&entry, sizeof(MilitaryPropertyEntry), 1, f);
 
 	fclose(f);
@@ -122,13 +122,13 @@ bool AddEntry(MilitaryPropertyEntry& entry)
 	return true;
 }
 
-// Читаємо в буфер всі записи, окрім того, який нам потрібно видалити та записуємо у файл
+// Р§РёС‚Р°С”РјРѕ РІ Р±СѓС„РµСЂ РІСЃС– Р·Р°РїРёСЃРё, РѕРєСЂС–Рј С‚РѕРіРѕ, СЏРєРёР№ РЅР°Рј РїРѕС‚СЂС–Р±РЅРѕ РІРёРґР°Р»РёС‚Рё С‚Р° Р·Р°РїРёСЃСѓС”РјРѕ Сѓ С„Р°Р№Р»
 bool RemoveEntryByID(int _id)
 {
 	FILE* f = fopen(DATABASE_FILENAME, "rb+");
 	if (!f)
 	{
-		printf("RemoveEntryByID(): не вдалося відкрити файл\n");
+		printf("RemoveEntryByID(): РЅРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р»\n");
 		return false;
 	}
 	
@@ -137,7 +137,7 @@ bool RemoveEntryByID(int _id)
 	long newSize = ftell(f) - sizeof(MilitaryPropertyEntry);
 	if (newSize <= sizeof(int))
 	{
-		printf("RemoveEntryByID(): файл пошкоджений\n");
+		printf("RemoveEntryByID(): С„Р°Р№Р» РїРѕС€РєРѕРґР¶РµРЅРёР№\n");
 		fclose(f);
 		return false;
 	}
@@ -160,14 +160,14 @@ bool RemoveEntryByID(int _id)
 		}
 		else
 		{
-			// переходимо до наступного ідентифікатора
+			// РїРµСЂРµС…РѕРґРёРјРѕ РґРѕ РЅР°СЃС‚СѓРїРЅРѕРіРѕ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂР°
 			fseek(f, sizeof(MilitaryPropertyEntry) - sizeof(id), SEEK_CUR);
 		}
 	}
 
 	rewind(f);
 
-	// зменшуємо розмір файлу
+	// Р·РјРµРЅС€СѓС”РјРѕ СЂРѕР·РјС–СЂ С„Р°Р№Р»Сѓ
 	_chsize_s(_fileno(f), newSize);
 
 	fwrite(buf, newSize, 1, f);
@@ -184,7 +184,7 @@ bool ModifyEntry(const MilitaryPropertyEntry& entry)
 	FILE* f = fopen(DATABASE_FILENAME, "rb+");
 	if (!f)
 	{
-		printf("ModifyEntry(): не вдалося відкрити файл\n");
+		printf("ModifyEntry(): РЅРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р»\n");
 		return NULL;
 	}
 
@@ -195,7 +195,7 @@ bool ModifyEntry(const MilitaryPropertyEntry& entry)
 	{
 		if (id == entry.id)
 		{
-			// знайшли запис
+			// Р·РЅР°Р№С€Р»Рё Р·Р°РїРёСЃ
 			fseek(f, -4, SEEK_CUR);
 			fwrite(&entry, sizeof(MilitaryPropertyEntry), 1, f);
 
@@ -205,7 +205,7 @@ bool ModifyEntry(const MilitaryPropertyEntry& entry)
 		}
 		else
 		{
-			// переходимо до наступного ідентифікатора
+			// РїРµСЂРµС…РѕРґРёРјРѕ РґРѕ РЅР°СЃС‚СѓРїРЅРѕРіРѕ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂР°
 			fseek(f, sizeof(MilitaryPropertyEntry) - sizeof(id), SEEK_CUR);
 		}
 	}
@@ -215,13 +215,13 @@ bool ModifyEntry(const MilitaryPropertyEntry& entry)
 	return false;
 }
 
-// пошук запису за ідентифікатором
+// РїРѕС€СѓРє Р·Р°РїРёСЃСѓ Р·Р° С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРѕРј
 bool FindEntryByID(int idToFind, MilitaryPropertyEntry& entry)
 {
 	FILE* f = fopen(DATABASE_FILENAME, "rb");
 	if (!f)
 	{
-		printf("FindEntryByID(): не вдалося відкрити файл\n");
+		printf("FindEntryByID(): РЅРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р»\n");
 		return false;
 	}
 
@@ -232,7 +232,7 @@ bool FindEntryByID(int idToFind, MilitaryPropertyEntry& entry)
 	{
 		if (id == idToFind)
 		{
-			// знайшли запис
+			// Р·РЅР°Р№С€Р»Рё Р·Р°РїРёСЃ
 			fseek(f, -4, SEEK_CUR);
 			fread(&entry, sizeof(MilitaryPropertyEntry), 1, f);
 
@@ -242,7 +242,7 @@ bool FindEntryByID(int idToFind, MilitaryPropertyEntry& entry)
 		}
 		else
 		{
-			// переходимо до наступного ідентифікатора
+			// РїРµСЂРµС…РѕРґРёРјРѕ РґРѕ РЅР°СЃС‚СѓРїРЅРѕРіРѕ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂР°
 			fseek(f, sizeof(MilitaryPropertyEntry) - sizeof(id), SEEK_CUR);
 		}
 	}
@@ -262,15 +262,15 @@ void PrintAllEntries(int _category)
 	FILE* f = fopen(DATABASE_FILENAME, "rb");
 	if (!f)
 	{
-		printf("PrintAllEntries(): не вдалося відкрити файл\n");
+		printf("PrintAllEntries(): РЅРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р»\n");
 		return;
 	}
 
-	// пропускаємо поле nextID
+	// РїСЂРѕРїСѓСЃРєР°С”РјРѕ РїРѕР»Рµ nextID
 	fseek(f, 4, SEEK_SET);
 
-	printf("Список майна:\n" \
-		"%-10s| %-20s| %-5s| %-5s| %-5s| %-5s| %-5s\n", "Ідентифікатор", "Назва", "Категорія", "Кількість", "Дата виробництва", "Дата постачання", "Заводський номер");
+	printf("РЎРїРёСЃРѕРє РјР°Р№РЅР°:\n" \
+		"%-10s| %-20s| %-5s| %-5s| %-5s| %-5s| %-5s\n", "Р†РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ", "РќР°Р·РІР°", "РљР°С‚РµРіРѕСЂС–СЏ", "РљС–Р»СЊРєС–СЃС‚СЊ", "Р”Р°С‚Р° РІРёСЂРѕР±РЅРёС†С‚РІР°", "Р”Р°С‚Р° РїРѕСЃС‚Р°С‡Р°РЅРЅСЏ", "Р—Р°РІРѕРґСЃСЊРєРёР№ РЅРѕРјРµСЂ");
 
 	MilitaryPropertyEntry entry;
 	while (fread(&entry, sizeof(MilitaryPropertyEntry), 1, f))
@@ -296,7 +296,7 @@ void PrintEntryByID(int id)
 	MilitaryPropertyEntry entry;
 	if (!FindEntryByID(id, entry))
 	{
-		printf("Запис не знайдено\n");
+		printf("Р—Р°РїРёСЃ РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 		return;
 	}
 
@@ -305,8 +305,8 @@ void PrintEntryByID(int id)
 	FormatDate(prodDate, entry.productionDate);
 	FormatDate(arrDate, entry.arrivalDate);
 
-	printf("Список майна:\n" \
-		"%-10s| %-20s| %-5s| %-5s| %-5s| %-5s| %-5s\n", "Ідентифікатор", "Назва", "Категорія", "Кількість", "Дата виробництва", "Дата постачання", "Заводський номер");
+	printf("РЎРїРёСЃРѕРє РјР°Р№РЅР°:\n" \
+		"%-10s| %-20s| %-5s| %-5s| %-5s| %-5s| %-5s\n", "Р†РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ", "РќР°Р·РІР°", "РљР°С‚РµРіРѕСЂС–СЏ", "РљС–Р»СЊРєС–СЃС‚СЊ", "Р”Р°С‚Р° РІРёСЂРѕР±РЅРёС†С‚РІР°", "Р”Р°С‚Р° РїРѕСЃС‚Р°С‡Р°РЅРЅСЏ", "Р—Р°РІРѕРґСЃСЊРєРёР№ РЅРѕРјРµСЂ");
 
 	printf("%-13d| %-20s| %-9d| %-9d| %-16s| %-15s| %-5d\n", entry.id, entry.name, entry.category, entry.count, prodDate, arrDate, entry.partNumber);
 }
@@ -316,21 +316,21 @@ const char* CategoryToStr(int category)
 	switch (category)
 	{
 	case CATEGORY_OTHER:
-		return "Різне";
+		return "Р С–Р·РЅРµ";
 	case CATEGORY_AMMUNITION:
-		return "Боєприпаси";
+		return "Р‘РѕС”РїСЂРёРїР°СЃРё";
 	case CATEGORY_WEAPON:
-		return "Стрілецька зброя";
+		return "РЎС‚СЂС–Р»РµС†СЊРєР° Р·Р±СЂРѕСЏ";
 	case CATEGORY_AIRCRAFT:
-		return "Літак";
+		return "Р›С–С‚Р°Рє";
 	case CATEGORY_TANK:
-		return "Танк";
+		return "РўР°РЅРє";
 	case CATEGORY_ARMORED_VEHICLE:
-		return "Бронетехніка";
+		return "Р‘СЂРѕРЅРµС‚РµС…РЅС–РєР°";
 	case CATEGORY_BULLETPROOF_VEST:
-		return "Бронежилет";
+		return "Р‘СЂРѕРЅРµР¶РёР»РµС‚";
 	default:
-		return "Невідома";
+		return "РќРµРІС–РґРѕРјР°";
 	}
 }
 
@@ -345,7 +345,7 @@ void PrintReport()
 	FILE* f = fopen(DATABASE_FILENAME, "rb");
 	if (!f)
 	{
-		printf("PrintReport(): не вдалося відкрити файл\n");
+		printf("PrintReport(): РЅРµ РІРґР°Р»РѕСЃСЏ РІС–РґРєСЂРёС‚Рё С„Р°Р№Р»\n");
 		return;
 	}
 
@@ -360,11 +360,11 @@ void PrintReport()
 		report[entry.category].totalUnitNum += entry.count;
 	}
 
-	printf("Загальна кількість записів: %d, кількість записів за категоріями:\n", nextID);
+	printf("Р—Р°РіР°Р»СЊРЅР° РєС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёСЃС–РІ: %d, РєС–Р»СЊРєС–СЃС‚СЊ Р·Р°РїРёСЃС–РІ Р·Р° РєР°С‚РµРіРѕСЂС–СЏРјРё:\n", nextID);
 
 	for (int i = 0; i < CATEGORY_MAXCOUNT; i++)
 	{
-		printf("%s: %d, %d шт.\n", CategoryToStr(i), report[i].entriesNum, report[i].totalUnitNum);
+		printf("%s: %d, %d С€С‚.\n", CategoryToStr(i), report[i].entriesNum, report[i].totalUnitNum);
 	}
 }
 
@@ -377,13 +377,13 @@ bool ProcessCommand(int command)
 		PrintAllEntries();
 		break;
 	case 2:
-		printf("Введіть ідентифікатор запису: ");
+		printf("Р’РІРµРґС–С‚СЊ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ Р·Р°РїРёСЃСѓ: ");
 		scanf("%d", &id);
 		PrintEntryByID(id);
 		break;
 	case 3:
 	{
-		printf("Введіть категорію: ");
+		printf("Р’РІРµРґС–С‚СЊ РєР°С‚РµРіРѕСЂС–СЋ: ");
 		scanf("%d", &id);
 
 		PrintAllEntries(id);
@@ -393,35 +393,35 @@ bool ProcessCommand(int command)
 	{
 		MilitaryPropertyEntry newEntry;
 
-		printf("Введіть ім'я: ");
+		printf("Р’РІРµРґС–С‚СЊ С–Рј'СЏ: ");
 		scanf("%s", newEntry.name);
 
-		printf("Введіть категорію: ");
+		printf("Р’РІРµРґС–С‚СЊ РєР°С‚РµРіРѕСЂС–СЋ: ");
 		scanf("%d", &newEntry.category);
 
-		printf("Введіть кількість: ");
+		printf("Р’РІРµРґС–С‚СЊ РєС–Р»СЊРєС–СЃС‚СЊ: ");
 		scanf("%d", &newEntry.count);
 
-		printf("Введіть рік дати виробництва: ");
+		printf("Р’РІРµРґС–С‚СЊ СЂС–Рє РґР°С‚Рё РІРёСЂРѕР±РЅРёС†С‚РІР°: ");
 		scanf("%d", &newEntry.productionDate.year);
 
-		printf("Введіть місяць дати виробництва: ");
+		printf("Р’РІРµРґС–С‚СЊ РјС–СЃСЏС†СЊ РґР°С‚Рё РІРёСЂРѕР±РЅРёС†С‚РІР°: ");
 		scanf("%d", &newEntry.productionDate.month);
 
-		printf("Введіть рік дати постачання: ");
+		printf("Р’РІРµРґС–С‚СЊ СЂС–Рє РґР°С‚Рё РїРѕСЃС‚Р°С‡Р°РЅРЅСЏ: ");
 		scanf("%d", &newEntry.arrivalDate.year);
 
-		printf("Введіть місяць дати постачання: ");
+		printf("Р’РІРµРґС–С‚СЊ РјС–СЃСЏС†СЊ РґР°С‚Рё РїРѕСЃС‚Р°С‡Р°РЅРЅСЏ: ");
 		scanf("%d", &newEntry.arrivalDate.month);
 
-		printf("Введіть заводський номер: ");
+		printf("Р’РІРµРґС–С‚СЊ Р·Р°РІРѕРґСЃСЊРєРёР№ РЅРѕРјРµСЂ: ");
 		scanf("%d", &newEntry.partNumber);
 
 		AddEntry(newEntry);
 		break;
 	}
 	case 5:
-		printf("Введіть ідентифікатор запису: ");
+		printf("Р’РІРµРґС–С‚СЊ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ Р·Р°РїРёСЃСѓ: ");
 		scanf("%d", &id);
 		RemoveEntryByID(id);
 		break;
@@ -429,53 +429,53 @@ bool ProcessCommand(int command)
 	{
 		int fieldNum;
 
-		printf("Введіть ідентифікатор запису: ");
+		printf("Р’РІРµРґС–С‚СЊ С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂ Р·Р°РїРёСЃСѓ: ");
 		scanf("%d", &id);
 
 		MilitaryPropertyEntry entry;
 		if (!FindEntryByID(id, entry))
 		{
-			printf("Запис не знайдено\n");
+			printf("Р—Р°РїРёСЃ РЅРµ Р·РЅР°Р№РґРµРЅРѕ\n");
 			return true;
 		}
 
-		printf("Поля:\n1. Ім'я\n2. Категорія\n3. Кількість\n4. Дата виробництва\n5. Дата постачання\n6. Заводський номер\nВведіть номер поля, яке ви бажаєте змінити: ");
+		printf("РџРѕР»СЏ:\n1. Р†Рј'СЏ\n2. РљР°С‚РµРіРѕСЂС–СЏ\n3. РљС–Р»СЊРєС–СЃС‚СЊ\n4. Р”Р°С‚Р° РІРёСЂРѕР±РЅРёС†С‚РІР°\n5. Р”Р°С‚Р° РїРѕСЃС‚Р°С‡Р°РЅРЅСЏ\n6. Р—Р°РІРѕРґСЃСЊРєРёР№ РЅРѕРјРµСЂ\nР’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РїРѕР»СЏ, СЏРєРµ РІРё Р±Р°Р¶Р°С”С‚Рµ Р·РјС–РЅРёС‚Рё: ");
 		scanf("%d", &fieldNum);
 
 		if (fieldNum == 1)
 		{
-			printf("Введіть ім'я: ");
+			printf("Р’РІРµРґС–С‚СЊ С–Рј'СЏ: ");
 			scanf("%s", entry.name);
 		}
 		else if (fieldNum == 2)
 		{
-			printf("Введіть категорію: ");
+			printf("Р’РІРµРґС–С‚СЊ РєР°С‚РµРіРѕСЂС–СЋ: ");
 			scanf("%d", &entry.category);
 		}
 		else if (fieldNum == 3)
 		{
-			printf("Введіть кількість: ");
+			printf("Р’РІРµРґС–С‚СЊ РєС–Р»СЊРєС–СЃС‚СЊ: ");
 			scanf("%d", &entry.count);
 		}
 		else if (fieldNum == 4)
 		{
-			printf("Введіть рік: ");
+			printf("Р’РІРµРґС–С‚СЊ СЂС–Рє: ");
 			scanf("%d", &entry.productionDate.year);
 
-			printf("Введіть місяць: ");
+			printf("Р’РІРµРґС–С‚СЊ РјС–СЃСЏС†СЊ: ");
 			scanf("%d", &entry.productionDate.month);
 		}
 		else if (fieldNum == 5)
 		{
-			printf("Введіть рік: ");
+			printf("Р’РІРµРґС–С‚СЊ СЂС–Рє: ");
 			scanf("%d", &entry.arrivalDate.year);
 
-			printf("Введіть місяць: ");
+			printf("Р’РІРµРґС–С‚СЊ РјС–СЃСЏС†СЊ: ");
 			scanf("%d", &entry.arrivalDate.month);
 		}
 		else if (fieldNum == 6)
 		{
-			printf("Введіть заводський номер: ");
+			printf("Р’РІРµРґС–С‚СЊ Р·Р°РІРѕРґСЃСЊРєРёР№ РЅРѕРјРµСЂ: ");
 			scanf("%d", &entry.partNumber);
 		}
 
@@ -503,20 +503,20 @@ int main()
 
 	WriteDefaultEntries();
 
-	printf("База даних обліку військового майна, закріпленого за військовою частиною #x\n");
+	printf("Р‘Р°Р·Р° РґР°РЅРёС… РѕР±Р»С–РєСѓ РІС–Р№СЃСЊРєРѕРІРѕРіРѕ РјР°Р№РЅР°, Р·Р°РєСЂС–РїР»РµРЅРѕРіРѕ Р·Р° РІС–Р№СЃСЊРєРѕРІРѕСЋ С‡Р°СЃС‚РёРЅРѕСЋ #x\n");
 
 	int command = 0;
 	do
 	{
-		printf("\nОберіть дію:\n" \
-			"1. Вивести на екран усі записи\n" \
-			"2. Вивести на екран запис за ідентифікатором\n" \
-			"3. Вивести на екран записи за категорією\n" \
-			"4. Додати запис\n" \
-			"5. Видалити запис\n" \
-			"6. Редагувати запис\n" \
-			"7. Вивести звіт\n" \
-			"8. Вихід\n");
+		printf("\nРћР±РµСЂС–С‚СЊ РґС–СЋ:\n" \
+			"1. Р’РёРІРµСЃС‚Рё РЅР° РµРєСЂР°РЅ СѓСЃС– Р·Р°РїРёСЃРё\n" \
+			"2. Р’РёРІРµСЃС‚Рё РЅР° РµРєСЂР°РЅ Р·Р°РїРёСЃ Р·Р° С–РґРµРЅС‚РёС„С–РєР°С‚РѕСЂРѕРј\n" \
+			"3. Р’РёРІРµСЃС‚Рё РЅР° РµРєСЂР°РЅ Р·Р°РїРёСЃРё Р·Р° РєР°С‚РµРіРѕСЂС–С”СЋ\n" \
+			"4. Р”РѕРґР°С‚Рё Р·Р°РїРёСЃ\n" \
+			"5. Р’РёРґР°Р»РёС‚Рё Р·Р°РїРёСЃ\n" \
+			"6. Р РµРґР°РіСѓРІР°С‚Рё Р·Р°РїРёСЃ\n" \
+			"7. Р’РёРІРµСЃС‚Рё Р·РІС–С‚\n" \
+			"8. Р’РёС…С–Рґ\n");
 
 		scanf("%d", &command);
 	} while (ProcessCommand(command));

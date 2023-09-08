@@ -1,4 +1,4 @@
-// Нормальні алгоритми маркова
+// РќРѕСЂРјР°Р»СЊРЅС– Р°Р»РіРѕСЂРёС‚РјРё РјР°СЂРєРѕРІР°
 #include <iostream>
 #include <Windows.h>
 
@@ -25,13 +25,13 @@ pNode CreateNode(char* pattern, char* replace, bool terminate)
 	return node;
 }
 
-// зчитування правил з файлу та створення списку правил
+// Р·С‡РёС‚СѓРІР°РЅРЅСЏ РїСЂР°РІРёР» Р· С„Р°Р№Р»Сѓ С‚Р° СЃС‚РІРѕСЂРµРЅРЅСЏ СЃРїРёСЃРєСѓ РїСЂР°РІРёР»
 pNode ReadRules(const char* fileName)
 {
 	FILE* file = fopen(fileName, "r");
 	if (!file)
 	{
-		printf("Файла '%s' не існує\n");
+		printf("Р¤Р°Р№Р»Р° '%s' РЅРµ С–СЃРЅСѓС”\n");
 		return NULL;
 	}
 	
@@ -49,7 +49,7 @@ pNode ReadRules(const char* fileName)
 	int i = 0, j = 0, k = 0, tmp = 0;
 	for (i = j = 0; buf[i] != '\0'; i++)
 	{
-		// переходимо до кінця рядка
+		// РїРµСЂРµС…РѕРґРёРјРѕ РґРѕ РєС–РЅС†СЏ СЂСЏРґРєР°
 		if (buf[i] != '\n')
 			continue;
 
@@ -150,7 +150,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	printf("Нормальні алгоритми Маркова\n");
+	printf("РќРѕСЂРјР°Р»СЊРЅС– Р°Р»РіРѕСЂРёС‚РјРё РњР°СЂРєРѕРІР°\n");
 
 	pNode rules = ReadRules("rules.txt");
 	if (!rules)
@@ -159,7 +159,7 @@ int main()
 		return 0;
 	}
 
-	printf("Введіть текст: \n");
+	printf("Р’РІРµРґС–С‚СЊ С‚РµРєСЃС‚: \n");
 
 	char text[128];
 	scanf("%128[^\n]", text);
